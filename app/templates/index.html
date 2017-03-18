@@ -1,0 +1,137 @@
+{% extends "base.html" %}
+{% block title %}首页{% endblock %}
+{% block page_content %}
+
+    
+    {%include 'kefu.html'%}
+    {%include 'header.html'%}
+
+     {%include 'nav.html'%}
+
+
+    
+     {%include 'category.html'%}
+    <div class="clear"></div>
+    <div class="page">
+        <!--每日新货-->
+        <div class="Daily_product ">
+            <div class="title_box title_bg1">
+                <div class="title_r">
+                    <div class="title_rbox vline1">产品专题 </div>
+                    <div class="more"><a href="产品专题.html"><i class="iconfont">&#xf02af;</i> </a></div>
+                </div>
+            </div>
+
+            <ul class="product_list">
+                {%for i in  special%}
+                <li class="product_style">
+                    <div class="hot_spacing">
+                        <div class="img"><a href="#">
+                            <img src="{{i.photo}}" width="150" height="130">
+                        </a></div>
+                        <div class="info">
+                            <div class="name"><a href="#">{{i.name}}</a></div>
+                            <!-- <p>美式轻奢典范</p> -->
+                            <div class="price"><i>&#165;</i>699<a href="#"><span>查看</span></a></div>
+                        </div>
+                    </div>
+                </li>
+                {%endfor%}
+                
+                
+            </ul>
+        </div>
+        <!--每日新货 end-->
+        <!--会员专享-->
+        <div class="Member_product ">
+            <div class="title_box title_bg2">
+                <div class="title_r">
+                    <div class="title_rbox vline2">热卖单品 </div>
+                    <div class="more"><a href="#"><i class="iconfont">&#xf02af;</i> </a></div>
+                </div>
+            </div>
+            <ul class="product_list">
+                {%for i in hot%}
+                <li class="product_style">
+                    <div class="hot_spacing">
+                        <em class="label_icon">
+                            <img src="{{url_for('static',filename='images/bg-hot.png')}}"></em> 
+                            <a href="/show_goods/{{i.id_md5}}.html">
+                                <div class="img">
+                                    <img src="{{thumbnail(i.id).url}}"></div>
+                                <div class="info">
+                                    <div class="name">{{i.name}}</div>
+                                    <div class="price"><i>&#165;</i>{{i.special_price}} </div>
+                                </div>
+                            </a>
+                    </div>
+                </li>
+                {%endfor%}
+            </ul>
+        </div>
+        <!--会员专享end-->
+        <!--精品区-->
+        <div class="Boutique">
+            <div class="Boutique_product ">
+                <div class="title_box title_bg3">
+                    <div class="title_r">
+                        <div class="title_rbox vline3">精品区 </div>
+                        <div class="more"><a href="#"><i class="iconfont">&#xf02af;</i></a> </div>
+                    </div>
+                </div>
+                <ul class="product_list">
+                    {%for i in excellent%}
+                    <li class="product_style">
+                        <div class="hot_spacing">
+                            <a href="/show_goods/{{i.id_md5}}.html">
+                                <div class="img">
+                                    <img src="{{thumbnail(i.id).url}}"></div>
+                                <!-- <p class="Mask"><span>{{i.name}}</span><span></p> -->
+                                <p>{{i.name}}</p>
+                            </a>
+                        </div>
+                    </li>
+                    {%endfor%}
+                    
+                </ul>
+            </div>
+        </div>
+        <!--精品区 end-->
+        <!--排行榜-->
+        <div class="Ranking_product ">
+            <div class="title_box title_bg4">
+                <div class="title_r">
+                    <div class="title_rbox vline4">排行榜 </div>
+                    <div class="more"><a href="#"><i class="iconfont">&#xf02af;</i></a> </div>
+                </div>
+            </div>
+            <ul class="product_list">
+                {%for i in tuijian%}
+                <li class="product_style">
+                    <div class="hot_spacing">
+                        <em class="label_icon">
+                            <!-- <img src="images/icon-hot.png"> -->
+                            </em>
+                            <a href="/show_goods/{{i.id_md5}}.html">
+                                <div class="img">
+                                    <img src="{{thumbnail(i.id).url}}"></div>
+                                    {{i.name}}
+                            </a>
+                    </div>
+                </li>
+                {%endfor%}
+                
+            </ul>
+        </div>
+        <!--排行榜 end-->
+    </div>
+    <div style="margin-bottom: 60px;"></div>
+    
+   {%include 'footer.html'%}
+
+
+
+{% endblock %}
+
+
+

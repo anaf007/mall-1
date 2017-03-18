@@ -1,0 +1,168 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>购物车</title>
+<link href="{{url_for('static',filename='css/TheSellerCenter.css')}}" rel="stylesheet" type="text/css">
+<script src="{{url_for('static',filename='js/jquery-1.8.0.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/order.js')}}"></script>
+<script src="{{url_for('static',filename='js/Calculation.js')}}"></script>
+<script src="{{url_for('static',filename='js/car.js')}}"></script>
+</head>
+
+<body bgcolor="#f5f5f5">
+
+<!--顶部位置-->
+<div class="TheTitle">
+	<input class="TheTitleBack" type="button" value="&nbsp;" onclick="javascript: history.back(-1);">
+    <h3 class="TheTitleTitle">购物车</h3>
+    <!-- <p>编辑</p> -->
+</div>
+
+<!--购物车-->
+<div class="TheShoppingCartBox">
+	<!--单个订单-->
+<form action="" method="post" id="form">
+	
+	
+	{%if result%}
+	
+	<div class="TheShoppingCartIndex">
+        <ul class="TheShoppingCart">
+        	
+            <li class="TheShoppingCartTitle">
+                <input id="Checkbox1" type="checkbox"  class="gou" />
+                <img src="images/photo_03.png">
+                <p>积分购商城</p>
+               
+            </li>
+            <!-- 商品信息 -->
+			{%for i in result %}
+            <li class="TheShoppingCartData">
+                <input type="checkbox" value="1" name="newslist" id="newslist-1" class="gouTwo"/>
+                <img src="{{thumbnail(i.id).url}}">
+                <div class="TheShoppingCartTxt">
+                <!-- 购物车信息  获取数量 -->
+                {%for c in get_car(i.id)%}
+                	<a>{{i.name}}</a> <a href="" style="float:right">删除</a>
+                    <p>¥<span name='span1' style='text-decoration:none;color:black;'>{{c.count*i.special_price}}</span>¥<span name='span2'>{{c.count*i.original_price}}</span></p>
+                    <input type="hidden" name="id" value="{{c.id}}">
+                    <b>
+                        <input id="min1" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="-" onclick="sub(this,{{i.special_price}},{{i.original_price}},{{c.id}})"/>
+                        <input id="text_box1" name="text_box1" type="text" value="{{c.count}}" style=" width:30px; text-align:center; border:1px solid #ccc;"  />
+                        <input id="add1" style=" width:20px; height:18px;border:1px solid #ccc;" type="button" value="+" onclick="add(this,{{i.special_price}},{{i.original_price}},{{c.id}})"/>
+                    </b>
+                {%endfor%}
+                </div>
+            </li>
+            <li>
+            	
+            </li>
+            {%endfor%}
+        </ul>
+    </div>
+    
+    {%else%}
+
+    <a href="/">亲，您的菜篮空空的，点我去菜市逛逛呗</a>
+	{%endif%}
+
+	</form>
+	
+    
+</div>
+
+<!--底部结算-->
+<div class="tailSettlement">
+	<ul class="tailSettlementLeft">
+    	<li><input id="Checkbox1" type="checkbox"  class="gou" /></li>
+        <li>全选</li>
+    </ul>
+    <ul class="tailSettlementRight">
+    	<li><p>合计：<span><label id="zong1" style="color:#ff5500;font-size:14px; font-weight:bold;"></label></span></p></li>
+    	<li><b>不含运费</b></li>
+        <li><input class="tailSettlementBtn" type="button" value="结算" onclick="submit()"></li>
+    </ul>
+</div>
+</body>
+</html>
+
+
+<script>
+//*******************************************************************************************
+function add(tis,youhui,yuanjia,id){
+    // 更新文本框的值
+    var count = $(tis).prev('input[name=text_box1]').attr("value");
+    $(tis).prev('input[name=text_box1]').attr("value",parseInt(count)+1);
+    //获取上节点
+    var uyouhuijia = youhui * (parseInt(count)+1)
+    var uyuanjia = yuanjia * (parseInt(count)+1)
+    $(tis).parent().prev('p').children('span[name=span1]').html(uyouhuijia.toFixed(2));
+    $(tis).parent().prev('p').children('span[name=span2]').html(uyuanjia.toFixed(2));
+GetCounts();
+if(count>=1){  
+$.ajax({url:"car_add_count/add/"+id});
+}
+}
+function sub(tis,youhui,yuanjia,id){
+    // 更新文本框的值
+    var count = $(tis).next('input[name=text_box1]').attr("value");
+    if(count>1){
+     $.ajax({url:"car_add_count/sub/"+id});   
+    }
+    if(count<=1){
+        count = 1;
+    }else{
+        count = count-1;
+    }
+
+    $(tis).next('input[name=text_box1]').attr("value",parseInt(count));
+    //获取上节点
+    var uyouhuijia = youhui * (parseInt(count))
+    var uyuanjia = yuanjia * (parseInt(count))
+    $(tis).parent().prev('p').children('span[name=span1]').html(uyouhuijia.toFixed(2));
+    $(tis).parent().prev('p').children('span[name=span2]').html(uyuanjia.toFixed(2));
+GetCounts();
+
+
+}
+function GetCounts(){
+    var conts = 0;
+    var aa = 0;
+    $("input[name=newslist]").each(function () { 
+            if ($(this).attr("checked")) { 
+                jisuan = $(this).siblings('div').children('p').children('span[name=span1]').html();
+                conts += parseFloat(jisuan); 
+            }
+        });
+    $("#zong1").html((conts).toFixed(2));
+
+}
+
+function submit(){
+    var id_list = new Array();
+    $("input[name=newslist]").each(function () {
+        if ($(this).attr("checked")) {
+            id_list.push($(this).siblings('div').children('input[name=id]').val())
+        }
+    });
+    if(id_list!=""){
+        // alert(id_list);
+       
+       $('#form').submit();
+    }
+}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+

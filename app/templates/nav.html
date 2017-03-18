@@ -1,0 +1,26 @@
+
+<!--banner-->
+     
+    <script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                pauseOnHover: true,
+                slideshowSpeed: 4000,
+                directionNav: false,
+                controlNav: true,
+
+            });
+        });
+    </script>
+    <!--banner-->
+    <div class="banner">
+        <div class="flexslider">
+            <ul class="slides">
+                <li><img src="{{url_for('static', filename = 'images/products/banner.jpg')}}" /></li>
+                <li><img src="{{url_for('static', filename = 'images/products/banner2.jpg')}}" /></li>
+                <li><img src="{{url_for('static', filename = 'images/products/banner.jpg')}}" /></li>
+
+            </ul>
+        </div>
+    </div>

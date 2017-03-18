@@ -1,0 +1,13 @@
+/*返回顶部*/
+#gotop{display:none;position:fixed;z-index:777;width:41px;height:55px;right:0px;bottom:65px;background:url(../images/top.png) no-repeat;cursor:pointer;background-size:41px 55px;}
+
+/*底部导航*/
+.global-nav{position: fixed;bottom: 0;z-index: 1013;width: 100%;max-width: 640px; }
+.nav_wrap{ height: 50px;border-top: 1px solid #e5e5e5;background-color: #fff; display:block;}
+.nav_item{float:left; width:20%; overflow: hidden;padding:5px 0;}
+.nav_item a{position: relative;width: 62px;/*height: 50px;*/line-height: 20px;text-align: center;white-space: nowrap;color: #666;}
+.nav_item a:hover{color:#fe4b4e;}
+.nav_iconfont{font-size:18px;font-style:normal;display: block; }
+.nav_tit{display: block;font-size: 12px;/* font-weight:bold;*/ }
+.cart_num{position: absolute;height: 16px;line-height: 16px;padding: 0 5px;border-radius: 8px;background-color: #fd4609;color: #fff;font-size: 12px;right:0px;top:4px;}
+.cur{color:#fe4b4e !important;}

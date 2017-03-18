@@ -1,0 +1,75 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>管理中心</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/seller_center.css')}}">
+</head>
+
+<body>
+<!--顶部-->
+<div class="Personal_header">
+  <!-- <input  type="submit" onclick="javascript: history.back(-1);" value=""> -->
+  <a href="/" class="Personal_header_return">&gt;</a>
+  <h3 class="Personal_header_Title">管理中心</h3>
+</div>
+<!--顶部 end--> 
+<!--个人中心-->
+<div  class="Personal_top">
+  <dl>
+    <dt><img src="{{url_for('static',filename='images/user.png')}}"></dt>
+    <dd>管理员 慢慢更改</dd>
+  </dl>
+</div>
+<!--个人中心 end--> 
+<!--交易情况-->
+<div class="Personal_top_list">
+<!--   <ul>
+    <li>
+      <p>今日成交额</p>
+      <span>￥0.00</span></li>
+    <li class="boder">
+      <p>今日访客</p>
+      <span>2</span></li>
+    <li>
+      <p>今日订单</p>
+      <span>1</span></li>
+  </ul> -->
+
+ {%for message in get_flashed_messages()%}
+ <h3>{{message}}</h3>
+ {%endfor%}
+
+</div>
+<!--订单标签 end--> 
+
+<!--用户操作-->
+<div class="Personal_list_box">
+  <ul>
+    <li> <a href="category_add"><img src="{{url_for('static',filename='images/Personal_1.png')}}"> <span>添加分类</span></a></li>
+    <li> <a href="special_add"><img src="{{url_for('static',filename='images/Personal_2.png')}}"> <span>添加专题</span></a></li>
+    <li> <a href="nav_add"><img src="{{url_for('static',filename='images/Personal_3.png')}}"> <span>nav导航</span></a></li>
+    <li> <a href="user_add"><img src="{{url_for('static',filename='images/Personal_4.png')}}"> <span>添加用户</span></a></li>
+    <!-- <li> <a href="店铺装修.html"><img src="{{url_for('static',filename='images/Personal_5.png')}}"> <span>店铺装修</span></a> </li> -->
+    <!-- <li> <a href="店铺设置.html"><img src="{{url_for('static',filename='images/Personal_6.png')}}"> <span>设置</span></a> </li> -->
+  </ul>
+</div>
+
+<!--用户操作 end-->
+<div class="blank3"></div>
+</body>
+</html>
+
+
+
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>index</title>
+</head>
+<body>
+
+</body>
+</html>

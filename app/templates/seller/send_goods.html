@@ -1,0 +1,99 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>添加商品</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/seller_center.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts/iconfont.css')}}">
+</head>
+
+<body>
+<!--顶部-->
+<div class="Release_header">
+  <a href="{{url_for('main.index',_external=True)}}" class="Release_header_return">&gt;</a>
+  <h3 class="Release_header_Title">添加商品</h3>
+</div>
+<!--顶部 end--> 
+<!--个人中心-->
+<form method="post" action="" enctype="multipart/form-data">
+<div  class="Release_top">
+  <!-- <input class="ReleaseBtn" type="button" value="" onclick="window.location = '#'"> -->
+</div>
+<!--个人中心 end--> 
+{%for message in get_flashed_messages()%}
+ <h1>{{message}}</h1>
+ {%endfor%}
+<!--用户操作-->
+<div class="Release_list_box">
+  <div class="Release_box">
+    <textarea placeholder="商品名称" name="name"></textarea>
+    <p>0/20</p>
+  </div>
+
+  <a href="#"><span>原价</span>
+  	<input class="input"  type="text" name="original" 
+  	onkeyup="value=value.replace(/[^\d.]/g,'') " value="9.99"></a>
+  <a href="#"><span>优惠价</span>
+  	<input class="input"  type="text" name="special"
+  	 onkeyup="value=value.replace(/[^\d.]/g,'') " value="8.88"></a> 
+  <a href="#"><span>产品数量</span>
+  	<input class="input"  type="text" name="count" 
+  	onkeyup="value=value.replace(/[^\d]/g,'')" value="3000"></a> 
+  <a href="#"><span>分类</span>
+  	<select name="category" id="">
+  		{% for i in category %}
+  		<option value="{{i.id}}">{{i.name}}</option>
+  		{%endfor%}
+  	</select>
+
+  	</a> 
+  <a href="#"><span>组合描述</span>
+  	<input class="input"  type="text" name="combination"></a> 
+  <a href="#"><span>款式</span>
+  	<input class="input"  type="text" name="goods_id"></a> 
+  <a href="#"><span>款式名称</span>
+  	<input class="input"  type="text" name="goods_name"></a> 
+  <a href="#"><span>详情</span>
+  	<input class="input"  type="text" name="note"></a> 
+  <a href="#"><span>限时特价</span>
+  	<input class="input"  type="text" name="time" onkeyup="value=value.replace(/[^\d.]/g,'') "></a> 
+  <a href="#"><span>tag</span>
+  	<input class="input"  type="text" name="tag"></a> 
+  <a href="#"><span>精品</span>
+  	<input type="checkbox" name="excellent"></a> 
+  <a href="#"><span>热门</span>
+  	<input type="checkbox" name="hot"></a> 
+  <a href="#"><span>单位</span>
+  	<select name="unit" id="">
+  		<option value="斤">斤</option>
+  		<option value="公斤">公斤</option>
+  		<option value="个">个</option>
+  		<option value="克">克</option>
+  		<option value="只">只</option>
+  		<option value="半边">半边</option>
+  	</select>
+  	</a> 
+  <a href="#"><span>排序</span>
+  	<input class="input"  type="text" name="sort" value="100"></a> 
+
+
+  <a href="#"><span>商品缩略图</span>
+  <input class="input"  type="file" name="file">
+  </a> 
+  
+ 
+</div>
+<!--用户操作 end-->
+<div class="blank4"></div>
+<!--按钮-->
+<div class="operationBox">
+  
+    <input class="goBuyBtn" type="button" value="放入仓库" onclick="window.location = '提交订单.html'">
+    <input class="goShoppingcartBtn" type="submit" value="立即发布">
+ 
+</div>
+</form>
+</body>
+</html>
+

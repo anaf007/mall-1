@@ -1,0 +1,48 @@
+/* CSS Document */
+* { margin: 0; padding: 0; list-style: none; text-decoration: none; font-family: 'Microsoft YaHei'; }
+body { background: #f5f5f5; max-width: 640px; margin: 0 auto; }
+img { border: none; vertical-align: middle; }
+/*商品分类 顶部*/
+.NavigationTop { overflow: hidden; position: relative; background: #ff4c50; min-height: 40px; border-bottom: 1px solid #ff3135; }
+.NavigationBack { cursor:pointer; position: absolute; left: 12px; top: 7px; line-height: 26px; background: url(../images/icon-back.png) no-repeat left center; background-size: auto 70%; font-size: 14px; color: #fff; padding-left: 16px; border: none; }
+.NavigationTitle { text-align: center; line-height: 40px; font-size: 16px; display: block; font-weight: bold; color: #fff; }
+/*商品分类*/
+.goodsListBox { overflow: hidden; }
+.goodsListLeft { float: left; background: #fff; width: 90px; overflow-y: auto; }
+.goodsListLeft>li { cursor:pointer; border-bottom: 1px solid #f1f1f1; }
+.GLindex { border-left: 2px solid transparent; line-height: 50px; color: #333; display: block; font-size: 14px; padding-left: 9px; }
+.GLindexClick { border-left: 2px solid #ff4c50; color: #ff4c50; background: #eee;}
+.goodsListRight { margin-left: 90px; padding-left: 10px; display: none; overflow-y: auto; }
+.goodsListTitle { margin: 5px 0; padding: 5px 10px; font-size: 12px; color: #333; background: #fee0e0; }
+.goodsList { overflow: hidden; }
+.goodsList li { float: left; width: 26%; border: 1px solid #d2d2d2; background: #fff; padding: 2%; margin-right: 4px; margin-bottom: 4px; }
+.goodsList img { display: block; width: 100%; }
+.goodsList a { line-height: 16px; display: block; margin-top: 2px; color: #333; font-size: 12px; text-align: center; }
+/*商品分类 - 1 */
+.classificationMenu { position: absolute; right: 12px; top: 7px; line-height: 26px; background: url(../images/phone_03.png) no-repeat left center; min-width: 26px; background-size: auto 25%; font-size: 14px; color: #fff; padding-left: 16px; border: none; }
+.goodsList-1Box { background: #fff; overflow: hidden; }
+.goodsList-1 { text-align: center; overflow: hidden; position: relative; margin-top: 14px; border-bottom: 1px solid #f5f5f5; padding-bottom: 14px; }
+.categoryBtn { position: absolute; left: 10%; top: 2px; }
+.categoryBtn input { display: block; border: none; background: url(../images/icoGoods_07.png) no-repeat center top; background-size: 100% auto; padding-top: 24px; font-size: 12px; color: #333; }
+.listBtn { position: absolute; right: 10%; top: 2px; }
+.listBtn input { display: block; border: none; background: url(../images/icoGoods_09.png) no-repeat center 1px; background-size: 100% auto; padding-top: 24px; font-size: 12px; color: #333; }
+.search { margin: 0 auto; }
+.search input { line-height: 40px; background: #ededed url(../images/index_06.png) no-repeat 6% center; background-size: auto 40%; border-radius: 5px; color: #9f9f9f; border: none; padding: 0 10%; width: 40%; }
+.goodsList-2 { overflow: hidden; margin: 5px auto; }
+.goodsList-2 li { float: left; width: 24.5%; border-left: 1px solid #e5e5e5; line-height: 22px; }
+.goodsList-2 li:first-child { border-left: none; }
+.goodsList-2 p { line-height: 22px; color: #666; font-size: 14px; text-align: center; }
+.priceBtn { display: block; line-height: 22px; color: #666; font-size: 14px; text-align: center; background: url(../images/priceBtn_14.png) no-repeat 88% top; }
+.priceBtnClick { background: url(../images/priceBtn_14.png) no-repeat 88% -22px; color: #ff4c4f; }
+.priceBtnClickDown { background: url(../images/priceBtn_14.png) no-repeat 88% -44px; color: #ff4c4f; }
+.LOGBox { overflow: hidden; background: #f5f5f5; }
+.LOG { margin: 10px; }
+.LOG>li { margin-bottom: 10px; background: #fff; border: 1px solid #d2d2d2; overflow: hidden; position: relative; }
+.LOGImg { float: left; width: 29%; margin: 1px; }
+.LOGImg img { display: block; width: 100%; }
+.LOGTxt { float: left; width: 60%; padding: 0 5%; height: 100%; }
+.LOGTxt a { margin: 10px auto; margin-bottom: 5px; display: block; font-size: 16px; color: #333; }
+.LOGTxt b { display: block; font-size: 14px; color: #666; font-weight: normal; }
+.LOGTxt p { position: absolute; left: 35%; bottom: 10%; font-size: 14px; color: #dd0000; }
+.LOGTxt p span { padding-left: 12px; font-size: 12px; color: #999; text-decoration: line-through; }
+.buyBtn { position: absolute; bottom: 10%; right: 10%; border: none; background: url(../images/Newstock_10.png) no-repeat center; height: 20px; width: 20px; background-size: 100% auto; }

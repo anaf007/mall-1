@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>商品列表</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{url_for('static',filename='js/jquery-1.0.0.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/navigation.js')}}"></script>
+</head>
+
+<body>
+    <!--商品分类 顶部-->
+    <div class="NavigationTop">
+        <input class="NavigationBack" type="submit" onclick="javascript: history.back(-1);" value="">
+        <h3 class="NavigationTitle">商品分类</h3>
+        <!-- <input class="classificationMenu" type="submit" value="&nbsp;">-->
+    </div>
+
+    <!--按条件筛选条件-->
+    <div class="goodsList-1Box">
+        <ul class="goodsList-1">
+            <li class="categoryBtn">
+                <input type="submit" value="分类" onclick="window.location = '/good_list'">
+            </li>
+            <li class="search">
+                <input type="text" placeholder="在千万商品中搜索">
+            </li>
+            <li class="listBtn">
+                <input class="switchBtn switchBtn_grid" type="submit" value="视图" onclick="changeCl(this)">
+            </li>
+        </ul>
+        <!-- <ul class="goodsList-2">
+            <li>
+                <p>综合销量</p>
+            </li>
+            <li>
+                <p>积分</p>
+            </li>
+            <li>
+                <p>新品</p>
+            </li>
+            <li><span class="priceBtn">价格</span></li>
+        </ul> -->
+    </div>
+
+    <!--每日新货-->
+    <ul id="List_box" class="NewstockBox grid">
+        {%for i in goods%}
+        <li>
+            <div class="Newstock">
+                <a href="/show_goods/{{i.id_md5}}.html">
+                <div class="proImg">
+                        <img src="{{thumbnail(i.id).url}}">
+                </div>
+                 </a>
+                <div class="proInfo" style="padding:0px;margin:0px;">
+                <a href="/show_goods/{{i.id_md5}}.html" style="padding:0px;margin:0px;font-size:20px;"> {{i.name}} 
+                   
+                    <p>{{i.combination}}</p>
+                   </a>
+                    <div class="NewstockTxt">
+                        <span>{{i.special_price}}</span>
+                        <input class="NewstockBtn" type="button" click="#" >
+                    </div>
+                </div>
+               
+            </div>
+        </li>
+        {%endfor%}
+        
+        
+        
+
+    </ul>
+</body>
+</html>

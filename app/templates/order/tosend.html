@@ -1,0 +1,13 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>totuan</title>
+</head>
+<body>
+	已支付订单，已接单，正在打包中。待发货 <br>
+	{%for i in result %}
+		订单号：{{i.number}}  支付金额：{{i.pay}}
+	{%endfor%}
+</body>
+</html>

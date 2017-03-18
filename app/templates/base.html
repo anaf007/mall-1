@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>{% block title %}{% endblock %}-熊猫菜乐园</title>
+   <link rel="stylesheet" href="{{url_for('static', filename = 'css/public.css')}}" type="text/css">
+   
+   <link rel="stylesheet" href="{{url_for('static', filename = 'Fonts/iconfont.css')}}" type="text/css">
+   
+    <link rel="stylesheet" href="{{url_for('static', filename = 'css/nav.css')}}" type="text/css">
+
+ <script src="{{url_for('static', filename='js/jquery-1.9.1.min.js')}}"></script>
+    <!-- banner -->
+   <link rel="stylesheet" href="{{url_for('static', filename = 'css/flexslider.css')}}" type="text/css">
+      <script src="{{url_for('static', filename='js/jquery.flexslider-min.js')}}"></script>
+      <!-- endbanner -->
+
+
+
+    <script>
+        $(function () {
+            $(".nav_item a").click(function () {
+                $(this).addClass('cur').siblings().removeClass('cur');
+            })
+
+            //侧边固定开始
+            /*$(window).scroll(function(){//滚动条事件
+            var topheight=$(this).scrollTop();//获取匹配元素相对滚动条顶部的偏移
+            if(topheight>500){
+                $(".TOPLayer").stop().show();
+                }else{
+                $(".TOPLayer").stop().hide();
+                }
+            });*/
+            //返回顶部
+            $(".GoTop").click(function () {
+                $('body,html').animate({ scrollTop: 0 }, 555);
+            })
+            //侧边固定 结束
+
+        })
+    </script>
+</head>
+
+<body>
+
+{% block page_content %}{% endblock %}
+    
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,17 @@
+ <!--底部导航-->
+    <div class="global-nav">
+        <div class="nav_wrap">
+            <div class="nav_item"><a href="#" class="cur"><i class="nav_iconfont iconfont">&#xf012b;</i> <span class="nav_tit">首页</span> </a></div>
+            <div class="nav_item"><a href="/good_list"><i class="nav_iconfont iconfont">&#xf017a;</i><span class="nav_tit">分类</span> </a></div>
+            <div class="nav_item"><a href=""><i class="nav_iconfont iconfont">&#xf01f5;</i><span class="nav_tit">精品菜谱</span> </a></div>
+            <div class="nav_item"><a href="/show_car"><i class="nav_iconfont iconfont">&#xf0178;</i><span class="nav_tit">购物车</span> <span class="cart_num">0</span> </a></div>
+            <div class="nav_item">
+            {%if current_user.is_authenticated %}
+            <a href="/{{current_user.id_md5}}/usercenter/{{current_user.unionid_md5}}"><i class="nav_iconfont iconfont">&#xf012d;</i><span class="nav_tit">会员中心</span> </a>
+            {%else %}
+             <a href="/usercenter"><i class="nav_iconfont iconfont">&#xf012d;</i><span class="nav_tit">会员中心</span> </a>{%endif%}
+
+            </div>
+        </div>
+    </div>
+    <!--底部导航 end-->

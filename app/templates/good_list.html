@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>产品分类</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/Navigation.css')}}">
+    <script src="{{url_for('static',filename='js/jquery-1.8.0.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/navigation.js')}}"></script>
+</head>
+
+<body>
+
+    <!--商品分类 顶部-->
+    <div class="NavigationTop">
+        <input class="NavigationBack" type="submit" onclick="javascript: history.back(-1);" value="返回">
+        <h3 class="NavigationTitle">商品分类</h3>
+    </div>
+
+    <!--商品分类-->
+    <div class="goodsListBox">
+        <ul class="goodsListLeft">
+            {%for i  in pid_good_list%}
+            <li><a class="GLindex">{{i.name}}</a></li>
+            {%endfor%}
+        </ul>
+
+        <!--单个模板-->
+         {%for i  in pid_good_list %} <!--顶级分类-->
+        <div class="goodsListRight">
+            {%for e in pid_category(i.id) %}
+            <div class="goodsListTitle">{{e.name}}</div>
+                <ul class="goodsList">
+                    {%for s in pid_category(e.id)%}
+                        <li><a href="/list_good/list_{{s.id}}.html"><img src="{{s.ico}}" alt="">{{s.name}}</a></li>
+                    {%endfor%}
+                </ul>
+            {%endfor%}
+        </div>
+        {%endfor%}
+
+        
+        
+
+    </div>
+</body>
+</html>

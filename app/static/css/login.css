@@ -1,0 +1,67 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{ margin:0; padding:0; list-style:none; text-decoration:none; font-family:'微软雅黑';}
+img{ border:none;}
+body{ background:#f5f5f5;}
+
+/*顶部*/
+.loginTop{ line-height:46px; height:46px; border-bottom:1px solid #d2d2d2; text-align:center; font-weight:bold; font-size:16px; color:#333; overflow:hidden; position:relative; }
+.backBtn{ position:absolute; width:10px; height:18px; background:url(../images/backBtn.png) no-repeat center; background-size:auto; border:none; left:12px; top:12px;}
+
+/*登录*/
+.loginTxt{ overflow:hidden; margin:20px auto; background:#fff; border-top:1px solid #d2d2d2; border-bottom:1px solid #d2d2d2;}
+.loginTxt li{ overflow:hidden; border-bottom:1px solid #d2d2d2;}
+.loginTxt li:last-child{ border-bottom:none;}
+.loginTxt p{ float:left; line-height:46px; width:25%; font-size:15px; margin-right:3%; color:#333; text-align:right;}
+.loginTxt input[type='text'],.loginTxt input[type='password']{ border:none; width:65%; padding:0 2%; line-height:30px; height:30px; margin-top:8px; font-size:15px; color:#333;}
+.loginOptions{ width:90%; margin:20px auto;}
+.loginOptions li{ overflow:hidden;}
+.loginBtn,.CheckCodeBtn{ display:block; width:100%; border:none; height:36px; margin-bottom:8px; background:#ff4800; color:#fff; border-radius:5px; }
+.FreeRegistration{ float:left; font-size:14px; color:#333;}
+.NoPassword{ float:right; font-size:14px; color:#333; }
+
+/*校验码 Data*/
+.CheckCodeData{ overflow:hidden; margin:20px auto;}
+.CheckCodeData p{ font-size:12px; color:#333; text-align:center;}
+.CheckCodeData span{ display:block; text-align:center; font-size:28px; color:#333;}
+
+/*注册结果*/
+.RegistrationResults{ text-align:center; margin:30px auto;}
+.RegistrationResults li{ display:inline-block; height:40px; margin:0 6px; overflow:hidden;}
+.RegistrationResults .successful{ display:block; width:40px; height:40px; background:url(../images/prompt_03.png) no-repeat; background-size:100% 100%;}
+.RegistrationResults p{ line-height:40px; color:#ff7200; font-size:18px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,120 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>用户中心</title>
+<link href="{{url_for('static',filename='css/TheSellerCenter.css')}}" rel="stylesheet" type="text/css">
+
+<style>
+.userBox{background:url("{{url_for('static',filename='images/userbg.png')}}") no-repeat center top;}
+.OrderTag_one{ background:url("{{url_for('static',filename='images/OrderTag_08.png')}}") no-repeat center 5px; background-size:42px auto;}
+.OrderTag_two{ background:url("{{url_for('static',filename='images/OrderTag_10.png')}}") no-repeat center 5px; background-size:42px auto;}
+.OrderTag_three{ background:url("{{url_for('static',filename='images/OrderTag_12.png')}}") no-repeat center 5px; background-size:42px auto;}
+.OrderTag_four{ background:url("{{url_for('static',filename='images/OrderTag_05.png')}}") no-repeat center 5px; background-size:42px auto;}
+.userBtn{background:url("{{url_for('static',filename='images/rightBtn-bai.png')}}") no-repeat center;}
+.userOperation li{ margin-left:12px; border-bottom:1px solid #dbdbdb; background:url("{{url_for('static',filename='images/rightBtn.png')}}") no-repeat 95% center; background-size:auto 35%;}
+.operationBG1{ background:url("{{url_for('static',filename='images/operationBG_19.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG2{ background:url("{{url_for('static',filename='images/operationBG_22.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG3{ background:url("{{url_for('static',filename='images/operationBG_25.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG4{ background:url("{{url_for('static',filename='images/operationBG_29.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG5{ background:url("{{url_for('static',filename='images/operationBG_33.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG6{ background:url("{{url_for('static',filename='images/operationBG_36.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.operationBG7{ background:url("{{url_for('static',filename='images/operationBG_39.png')}}") no-repeat 6px center; background-size:auto 35%;}
+.memberCenter li:last-child{ border-bottom:none;  background:url("{{url_for('static',filename='images/rightBtn.png')}}") no-repeat 95% center; background-size:auto 35%; }
+.memberCenter li:first-child{ background:url("{{url_for('static',filename='images/rightBtn.png')}}") no-repeat 95% center; background-size:auto 25%;}
+.coupons_red{ background:url("{{url_for('static',filename='images/coupons_03.png')}}") repeat-y center top; background-size:100% auto;}
+.coupons_green{ background:url("{{url_for('static',filename='images/coupons_06.png')}}") repeat-y center top; background-size:100% auto;}
+.coupons_yellow{ background:url("{{url_for('static',filename='images/coupons_08.png')}}") repeat-y center top; background-size:100% auto;}
+.coupons_blue{ background:url("{{url_for('static',filename='images/coupons_10.png')}}") repeat-y center top; background-size:100% auto;}
+
+
+
+</style>
+</head>
+
+<body bgcolor="#f5f5f5">
+
+<!--顶部位置-->
+<div class="TheTitle">
+<a href="/">
+	<input class="TheTitleBack" type="button" value="&nbsp;">
+    <h3 class="TheTitleTitle">用户中心</h3>
+</a>
+</div>
+
+<!--用户资料-->
+<div class="userBox">
+<a href="/userinfo">
+	<ul class="user">
+    	<li class="userPhoto">
+        	<img src="{{url_for('static',filename='images/avarast.png')}}">
+        </li>
+        <li class="userTxt">
+        	<b>{{current_user.actualName}}</b>
+            <p>手机：<span>{{current_user.phone}}</span></p>
+        </li>
+    </ul>
+    <input class="userBtn" type="button" value="">
+</a>
+</div>
+
+<!--订单标签-->
+<div class="OrderTagStyle">
+<a href="/order/all">
+	<p>全部订单</p>
+    <input class="OrderTagStyleBtn" type="button" value="查看全部订单&gt;" >
+    </a>
+</div>
+<ul class="OrderTag">
+	<li class="OrderTag_one">
+		<a href="/order/topay">
+	    	<p>待支付</p>
+	        <span>{{topay}}</span>
+	    </a>
+    </li>
+	<li class="OrderTag_two">
+		<a href="/order/tosend">
+			<p>待发货</p>
+        	<span>{{tosend}}</span>
+		</a>
+    </li>
+    <li class="OrderTag_two">
+		<a href="/order/send">
+			<p>已发货</p>
+        	<span>{{send}}</span>
+		</a>
+    </li>
+	<li class="OrderTag_three">
+    	<p>待评价</p>
+        <span>{{evaluation}}</span>
+    </li>
+	<!-- <li class="OrderTag_four">
+    	<p>退货/维修</p>
+        <span>9</span>
+    </li> -->
+</ul>
+
+<!--用户操作-->
+<ul class="userOperation">
+	<!-- <li><a class="operationBG1" href="#">我的钱包</a></li> -->
+	<li><a class="operationBG2" href="/coupons">我的优惠券</a></li>
+	<li><a class="operationBG3" href="#">我的购物车</a></li>
+	<li><a class="operationBG4" href="#">我的收藏</a></li>
+	<li><a class="operationBG5" href="#">积分明细</a></li>
+</ul>
+<ul class="userOperation">
+	<li><a class="operationBG6" href="/user_set">账号管理</a></li>
+	<li><a class="operationBG7" href="/addresslist">收货地址</a></li>
+	{% if current_user.seller %}
+	<li><a class="operationBG7" href="/seller/{{current_user.id_md5}}">我的店铺</a></li>
+	{%endif%}
+	
+</ul>
+
+
+
+</body>
+</html>
+
+

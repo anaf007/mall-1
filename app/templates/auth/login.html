@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>账户登录</title>
+<meta name="viewport" content="width=device-width" />
+<link href="{{url_for('static',filename='css/login.css')}}" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+<!--顶部-->
+<div class="loginTop">
+	<p>账户登录</p>
+</div>
+ {%for message in get_flashed_messages()%}
+ <h3>{{message}}</h3>
+ {%endfor%}
+<form action="" method="post">
+<!--登录-->
+<ul class="loginTxt">
+	<li>
+    	<p>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;户</p>
+        <input type="text" placeholder="用户名/手机" name="username">
+    </li>
+    <li>
+    	<p>登录密码</p>
+        <input type="password" placeholder="请输入密码" name="password">
+    </li>
+</ul>
+
+<ul class="loginOptions">
+	<li><input class="loginBtn" type="submit" value="登&nbsp;&nbsp;&nbsp;&nbsp;录"></li>
+	<li>
+    	<a class="FreeRegistration" href="#">免费注册</a>
+    	<a class="NoPassword" href="#">忘记密码</a>
+    </li>
+</ul>
+</form>
+</body>
+</html>

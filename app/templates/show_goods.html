@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>{{goods_result.name}}</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+<script src="{{url_for('static',filename='js/jquery-1.8.0.min.js')}}"></script>
+<script src="{{url_for('static',filename='js/detail.js')}}"></script>
+</head>
+
+<body>
+<!--顶部-->
+<div class="NavigationTop">
+  <input class="NavigationBack" type="submit" onclick="javascript: history.back(-1);" value="">
+  <h3 class="NavigationTitle">商品详情</h3>
+  <!-- <input class="classificationMenu" type="submit" value="&nbsp;">--> 
+</div>
+<!--图片切换--> 
+<script src="{{url_for('static',filename='js/jquery.flexslider-min.js')}}"></script> 
+<script>
+        $(window).load(function () {
+            $('.flexslider').flexslider({
+                animation: "slide",
+                pauseOnHover: true,
+                slideshowSpeed: 4000,
+                directionNav: false,
+                controlNav: true,
+
+            });
+        });
+    </script>
+<div class="banner">
+  <div class="flexslider">
+    <ul class="slides">
+    {% for i in thumbnail_all(goods_result.id)%}
+      <li> <img src="{{i.url}}" /> </li>
+    {% endfor %}
+    </ul>
+  </div>
+</div>
+<!--图片切换 end--> 
+<!--关于商品-->
+<div class="goodsAbout">
+  <div class="goodsName"> <a>{{goods_result.name}}</a>
+    <p class="collectionBtn">收藏</p>
+    <a>{{goods_result.combination}}</a>
+  </div>
+  <div class="goodsPrice">
+    <p>¥{{goods_result.special_price}}
+    <p> <b>参考价：{{goods_result.original_price}}</b> 
+  </div>
+</div>
+
+<!--优惠券-->
+<!-- <ul class="couponsBox">
+  <li>
+    <select>
+      <option>优惠：满79元，部分省市包邮</option>
+    </select>
+  </li>
+  <li>
+    <p class="couponsIndex"><span>券</span>点击领取店铺优惠券</p>
+  </li>
+</ul> -->
+
+<!--选择尺寸-->
+<div class="chooseSizeBtn">
+  <!-- <p class="XZCC">选择<span>尺码</span>颜色分类</p> -->
+</div>
+
+<!--关于卖家-->
+<ul class="sellerAbout">
+  <li>
+    <div class="sellerImg"><img src="{{seller_result.avatar}}"></div>
+    <div class="sellerTxt">{{seller_result.name}}</div>
+  </li>
+  <li>
+    <!-- <input class="CustomerService" type="submit" value="联系店铺客服"> -->
+    <!-- <input class="ShopDetails" type="submit" value="查看店铺商品"> -->
+  </li>
+</ul>
+
+<!--继续拖动-->
+<div class="ContinueDrag">
+  <p><span>{{goods_result.note}}</span></p>
+</div>
+
+<!--操作-->
+<div class="operationBox">
+  <div class="operation"> 
+  <!-- <a class="CustomerServiceLink" href="#">客服</a>  -->
+  <!-- <a class="ShopDetailsLink" href="#">店铺</a> -->
+    <!-- <input class="goBuyBtn" type="button" value="立即购买" onclick="window.location = '提交订单.html'"> -->
+    <input class="goShoppingcartBtn" type="button" value="加入购物车" onclick="window.location = '/add_car/{{goods_result.id}}'">
+  </div>
+</div>
+
+<!--加入购物车-->
+<!-- <div class="layerBox GWC">
+  <div class="goShoppingcart">
+    <div class="goShoppingcartTitle">
+      <div class="goodsImg"><img src="products/banner_02.png"></div>
+      <ul class="goodsTxt">
+        <li><a>53度汾酒集团清香古酿1.5L大坛装</a></li>
+        <li> <b>¥1999</b>
+          <p>商品编号<span>123456</span></p>
+        </li>
+      </ul>
+      <div class="EscBtn"></div>
+    </div>
+    <ul class="specifications">
+      <li>
+        <h3>规格</h3>
+      </li>
+      <li>
+        <p>海之蓝 42度 375ml</p>
+        <p>海之蓝 42度 480ml</p>
+        <p>海之蓝 42度 375ml*6瓶</p>
+        <p>海之蓝 42度 480ml*6瓶</p>
+        <p>海之蓝 42度 375ml*6瓶</p>
+        <p>海之蓝 42度 480ml*6瓶</p>
+      </li>
+    </ul>
+    <div class="buyNumberBox">
+      <h3>购买数量</h3>
+      <ul class="buyNumber">
+        <li>
+          <input type="button" value="-">
+        </li>
+        <li style="margin-top:-1px;">
+          <input type="text" value="1">
+        </li>
+        <li>
+          <input type="button" value="+">
+        </li>
+      </ul>
+    </div>
+    <div class="buyBtnBox">
+      <input class="buyBtn" type="submit" value="加入购物车">
+    </div>
+  </div>
+</div>
+ -->
+<!--领取优惠券-->
+<!-- <div class="layerBox YHQ">
+  <div class="couponsLayer">
+    <div class="couponsTitle">
+      <p>优惠券</p>
+      <div class="EscBtn"></div>
+    </div>
+    <ul class="coupons">
+      <li>
+        <h3>中秋8.15元券</h3>
+        <a>订单活动商品减8.15元，无门槛使用</a>
+        <p>有效期：<span>2016.09.09</span>至<span>2016.09.23</span></p>
+        <input class="couponsBtn" type="button" value="领取">
+      </li>
+      <li>
+        <h3>中秋8.15元券</h3>
+        <a>订单活动商品减8.15元，无门槛使用</a>
+        <p>有效期：<span>2016.09.09</span>至<span>2016.09.23</span></p>
+        <input class="couponsBtn" type="button" value="领取">
+      </li>
+      <li>
+        <h3>中秋8.15元券</h3>
+        <a>订单活动商品减8.15元，无门槛使用</a>
+        <p>有效期：<span>2016.09.09</span>至<span>2016.09.23</span></p>
+        <input class="couponsBtn" type="button" value="领取">
+      </li>
+    </ul>
+  </div>
+</div> -->
+</body>
+</html>

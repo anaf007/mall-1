@@ -1,0 +1,217 @@
+
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width" />
+    <title>无标题文档</title>
+    <link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/style.css')}}">
+    <script src="{{url_for('static',filename='js/jquery-1.9.1.min.js')}}"></script>
+    <script src="{{url_for('static',filename='js/detail.js')}}"></script>
+</head>
+
+<body>
+    <!--顶部-->
+    <div class="NavigationTop">
+        <input class="NavigationBack" type="submit" onclick="javascript: history.back(-1);" value="">
+        <h3 class="NavigationTitle">提交订单</h3>
+        <!-- <input class="classificationMenu" type="submit" value="&nbsp;">-->
+    </div>
+<!--地址-->
+<div class="addressBox">
+
+{%if address%}
+	{%for i in address%}
+  		{%if i.state ==1%}
+			<input type="hidden" name="address_id" value="{{i.id}}">
+			<h4>{{i.username}}&nbsp;{{i.phone}}</h4> <br>{{i.address}}
+  		{%endif%}
+  	{%endfor%}
+{%else%}
+	<p class="addressIndex">请填写收货地址</p>
+{%endif%}
+</div>
+
+<!--购物清单-->
+<div class="ShoppingListTitle">购物清单</div>
+<ul class="ShoppingList">
+{%for i in goods%}
+	<li>
+    	<div class="ShoppingListImg"><img src="products/banner_02.png"></div>
+        <div class="ShoppingListTxt">
+        	<a>{{i.name}}</a>
+        	<p><span>53度</span>/<span>365ml</span>/<span>数量1</span></p>
+            <b>¥1999.00</b>
+        </div>
+    </li>
+{%endfor%}
+</ul>
+<ul class="messageBox">
+	<li><input class="message" type="text" placeholder="给卖家留言："></li>
+	<li>
+    	<p>合计：<span>{{total_price}}</span></p>
+        <b>共 {{goods|count}}  件商品</b>
+    </li>
+</ul>
+
+<!--积分-->
+<!-- <div class="integralBox">
+	<p>积分</p>
+    <div class="defaultBtnBox">
+    	<div class="defaultBtn">&nbsp;</div>
+	</div>
+    <span>可用438积分抵扣8.75元</span>
+</div> -->
+
+<!--运费信息-->
+<ul class="freightBox">
+	<li><p>商品金额：</p><span>{{total_price}}</span></li>
+	<li><p>运&nbsp;&nbsp;费：</p><span>
+{%for i in shipping%}
+		{%if total_price> i.max_price%}
+		0
+		{%else%}
+{{i.freight}}
+		{%endif%}
+
+		，满{{i.max_price}}元免运费，
+	{%endfor%}
+
+
+
+	</span></li>
+</ul>
+
+
+<div class="settlementBox">
+	<input class="settlement" type="submit" value="提交订单">
+	<p>实付：<span>¥0.00</span></p>
+</div>
+
+
+
+<!--默认地址 弹窗-->
+<div class="layerBox SHDZ">
+	<div class="addressLayer">
+    	<div class="addressTitle">
+        	<p>编辑收货地址</p>
+            <input class="EscBtn" type="button">
+        </div>
+        <ul class="address">
+        	<li><input type="text" placeholder="姓名"></li>
+        	<li><input type="text" placeholder="联系电话"></li>
+        	<li><input type="text" placeholder="省、市、区、乡"></li>
+        	<li><input type="text" placeholder="详细地址"></li>
+        	<li><input type="text" placeholder="邮政编码（选填）"></li>
+        </ul>
+        
+        <div class="defaultBox">
+        	<p>设为默认地址</p>
+            <div class="defaultBtnBox">
+            	<div class="defaultBtn">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="defaultAddress"><input type="button" value="确认地址"></div>
+    </div>
+</div>
+
+
+<!--付款详情 弹窗-->
+<div class="layerBox FKXQ">
+	<div class="paymentLayer">
+    	<div class="paymentTitle">
+        	<p>付款详情</p>
+            <input class="EscBtn" type="button">
+        </div>
+        
+        <ul class="payment">
+        	<li>
+            	<p>商品名称</p>
+                <span>53 度汾酒集团清香古酿1.5L大坛装</span>
+            </li>
+        	<li>
+            	<p>付款方式</p>
+                <span>账户余额</span>
+            </li>
+            <li>
+            	<b>支付金额</b>
+                <span>1999.00元</span>
+            </li>
+        </ul>
+        
+        <div class="ConfirmPayment"><input type="button" value="确认付款"></div>
+    </div>
+</div>
+
+<!--选择收货地址-->
+<div class="layerBox XZSHDZ">
+    <div class="SelectAddressBox">
+    	<div class="SelectAddressTitle">
+        	<p>选择收货地址</p>
+            <input class="EscBtn" type="button">
+        </div>
+        <ul class="SelectAddress">
+        	<li>
+            	<ul class="SelectAddressTxt">
+                	<li>
+                    	<p>姓名</p>
+                    	<span>15567899876</span>
+                	</li>
+                    <li>
+                    	<p>天津市 河东区 中山门街道 黄盈盈(300170)</p>
+                    </li>
+                </ul>
+                <ul class="SelectAddressCaozuo">
+                	<li class="addressIndex1"><img src="images/SelectAddress_09.png"><span>编辑</span></li>
+                	<li ><img src="images/SelectAddress_06.png"><span>删除</span></li>
+                </ul>
+            </li>
+        	<li>
+            	<ul class="SelectAddressTxt">
+                	<li>
+                    	<p>姓名</p>
+                    	<span>15567899876</span>
+                	</li>
+                    <li>
+                    	<p>天津市 河东区 中山门街道 黄盈盈(300170)</p>
+                    </li>
+                </ul>
+                <ul class="SelectAddressCaozuo">
+                	<li class="addressIndex1"><img src="images/SelectAddress_09.png"><span>编辑</span></li>
+                	<li><img src="images/SelectAddress_06.png"><span>删除</span></li>
+                </ul>
+            </li>
+        </ul>
+        <div class="SelectAddressBtn"><input type="button" value="去支付"></div>
+    </div>    
+</div>    
+
+<div class="layerBox SHDZ1">
+	<div class="addressLayer">
+    	<div class="addressTitle">
+        	<p>编辑收货地址</p>
+            <input class="EscBtn" type="button">
+        </div>
+        <ul class="address">
+        	<li><input type="text" placeholder="姓名"></li>
+        	<li><input type="text" placeholder="联系电话"></li>
+        	<li><input type="text" placeholder="省、市、区、乡"></li>
+        	<li><input type="text" placeholder="详细地址"></li>
+        	<li><input type="text" placeholder="邮政编码（选填）"></li>
+        </ul>
+        
+        <div class="defaultBox">
+        	<p>设为默认地址</p>
+            <div class="defaultBtnBox">
+            	<div class="defaultBtn">&nbsp;</div>
+            </div>
+        </div>
+
+        <div class="defaultAddress"><input type="button" value="确认地址"></div>
+    </div>
+</div>
+
+</body>
+</html>
+

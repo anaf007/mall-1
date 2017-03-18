@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width" />
+<title>添加分类</title>
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='css/seller_center.css')}}">
+<link rel="stylesheet" type="text/css" href="{{url_for('static',filename='fonts/iconfont.css')}}">
+</head>
+
+<body>
+<!--顶部-->
+<div class="Release_header">
+  <a href="{{url_for('admin.index',_external=True)}}" class="Release_header_return">&gt;</a>
+  <h3 class="Release_header_Title">添加分类</h3>
+</div>
+<!--顶部 end--> 
+<!--个人中心-->
+<form method="post" action="">
+<div  class="Release_top">
+  <!-- <input class="ReleaseBtn" type="button" value="" onclick="window.location = '#'"> -->
+</div>
+<!--个人中心 end--> 
+{%for message in get_flashed_messages()%}
+ <h1>{{message}}</h1>
+ {%endfor%}
+<!--用户操作-->
+<div class="Release_list_box">
+  <div class="Release_box">
+    <textarea placeholder="栏目名称" name="name"></textarea>
+    <p>0/60</p>
+  </div>
+  <!-- <a href="#"><span>栏目</span><i class="nav_iconfont iconfont">&#xf02af;</i></a>  -->
+  <a href="#"><span>上级目录</span>
+  	<select name="pid" id="">
+  	{%for i in category%}
+  		<option value="{{i.id}}">{{i.name}}</option>
+  	{%endfor%}
+  	</select>
+  	</a> 
+  <!-- <a href="#"><span>栏目图标</span> -->
+  	<!-- <input class="input"  type="text" placeholder="" name="ico"></a>  -->
+  <a href="#"><span>栏目排序</span>
+  	<input class="input"  type="text" placeholder="" name="sort" value="100"></a> 
+  <a href="#"><span>是否置顶</span>
+  	<input class="input"  type="checkbox" placeholder="" name="status"></a> 
+</div>
+<!--用户操作 end-->
+<div class="blank4"></div>
+<!--按钮-->
+<div class="operationBox">
+  
+    <input class="goBuyBtn" type="button" value="放入仓库" onclick="window.location = '提交订单.html'">
+    <input class="goShoppingcartBtn" type="submit" value="立即发布">
+ 
+</div>
+</form>
+</body>
+</html>
+
+
+
